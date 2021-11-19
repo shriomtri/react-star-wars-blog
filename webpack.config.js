@@ -10,11 +10,13 @@ module.exports = {
   module: {
     rules: [
       {
+        // load js or jsx files
         loader: 'babel-loader',
         test: /\.(js|jsx)$/,
         exclude: /node_modules/
       },
       {
+        //load scss css sass files
         test: /\.s[ac]ss$/i,
         use:[
           // Creates `style` nodes from JS strings
@@ -24,6 +26,15 @@ module.exports = {
           // Compiles Sass to CSS
           "sass-loader",
         ]
+      },
+      {
+        //files
+        test: /\.(eot|svg|woff|woff2|otf|ttf)$/,
+        exclude: /node_modules/,
+        loader: 'file-loader',
+        options: {
+            name: '[path][name].[ext]'
+        }
       }
     ]
   },

@@ -1,13 +1,13 @@
 import React from "react";
 import { render } from 'react-dom'
-import './styles/styles.scss'
+import Button from '@mui/material/Button';
 
-const App = () => {
-  return(
-    <div>
-      <h1> Hello World! </h1>
-      <h3>From inside src/app.js, which is bundle to public/bundle.js</h3>
-    </div>
+const App = (props) => {
+  return (
+    <>
+      <h1>TESt</h1>
+      <Button variant="contained"> Click me</Button>
+    </>
   )
 }
 
