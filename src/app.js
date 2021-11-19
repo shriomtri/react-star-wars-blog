@@ -3,6 +3,7 @@ import Ad from "./components/ad/Ad";
 import Loader from "./components/loader/loader";
 
 import Navigation from "./components/nav/navbar";
+import Post from "./components/post/post";
 import Welcome from "./components/welcome/Welcome";
 import { API } from "./shared/http";
 
@@ -18,7 +19,6 @@ class App extends React.Component {
 
   this.getPosts = this.getPosts.bind(this);
   }
-
 
   componentDidMount() {
       this.getPosts();
@@ -62,6 +62,18 @@ class App extends React.Component {
           <div className="home">
             <Welcome />
             <div>
+              {
+                this.state.posts.length && (
+                  <div className="posts">
+                    {this.state.posts.map((post) => (
+                      <>
+                      {console.log(post)}
+                      <Post id={post.episode_id} key={post.episode_id} post={post} />
+                      </>
+                    ))}
+                  </div>
+                )
+              }
               <button className="block">Load more posts</button>
             </div>
             <div>
