@@ -1,11 +1,15 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-//style
-import './styles/styles.scss'
-
 // app component
 import App from './app';
+import { CssBaseline } from '@mui/material';
 
 //render
-render( <App />, document.getElementById('root'));
+render(
+  <>
+    <CssBaseline/>
+    <App />
+  </>, 
+  document.getElementById('root')
+  );
