@@ -7,7 +7,7 @@ import humanize from 'humanize-duration';
  * @method UserHeader
  * @param  {Object}   props
  */
-const UserHeader = ({ created: date, director, imageUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoL3I__nDf2VpGRLOB6jaeL_N0i4e36sCOjw&usqp=CAU'}) => {
+const UserHeader = ({ created: date, director, imageUrl }) => {
     return (
         <div className="user-header">
             <div className="user-info-section">
@@ -40,7 +40,7 @@ UserHeader.propTypes = {
 };
 
 UserHeader.defaultProps = {
-    imageUrl: 'shorturl.at/rBU48'
+    imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQT05A1XDOxuIeEdlYTby3XxKV27iIfda6H_w&usqp=CAU'
 };
 
 export default UserHeader;
