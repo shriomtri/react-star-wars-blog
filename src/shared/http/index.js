@@ -1,0 +1,1 @@
+export * as API from './post-endpoint';

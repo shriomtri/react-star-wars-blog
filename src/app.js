@@ -4,17 +4,51 @@ import Loader from "./components/loader/loader";
 
 import Navigation from "./components/nav/navbar";
 import Welcome from "./components/welcome/Welcome";
+import { API } from "./shared/http";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       error: null,
-      loading: false,
+      loading: true,
       posts: [],
       endpoint: ``,
     };
+
+  this.getPosts = this.getPosts.bind(this);
   }
+
+
+  componentDidMount() {
+      this.getPosts();
+  }
+
+  getPosts() {
+      // const posts = await API.getPostsForPage();
+      // console.log(posts);
+      API.getPostsForPage().then(
+        res => {
+          res.json().then(posts => {
+            console.log(posts)
+            this.setState(() => ({
+              ...this.state,
+              loading: false,
+              posts: posts.results,
+            }))
+          })
+        }
+      )
+  }
+
+  componentDidCatch(err, info) {
+    console.log(err);
+    console.log(info);
+    this.setState({
+      error: err
+    })
+  }
+
 
   render() {
     return (
