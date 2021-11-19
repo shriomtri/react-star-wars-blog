@@ -1,5 +1,6 @@
 import React from "react";
 import { render } from 'react-dom'
+import './styles/styles.scss'
 
 const App = () => {
   return(
@@ -10,4 +11,4 @@ const App = () => {
   )
 }
 
-render( <App />, document.getElementById('root'));
+export default App;
