@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import Filter from 'bad-words'
+
+const filter = new Filter()
 class CreatePost extends React.Component {
 
   constructor(props) {
@@ -14,12 +17,21 @@ class CreatePost extends React.Component {
   }
 
   handleOnChange(e){
-    const content = e.target.value;
+    const content = filter.clean(e.target.value);
+
     this.setState({content, valid: content.length < 280})
   }
 
   handleOnSubmit() {
-    
+      if(!this.state.valid) {
+        return;
+      }
+
+      const newPost = {
+        content: this.state.content,
+      }
+
+      console.log(newPost);
   }
 
   render() {

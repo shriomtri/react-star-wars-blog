@@ -26,6 +26,7 @@
     "webpack-dev-server": "^4.5.0"
   },
   "dependencies": {
+    "bad-words": "^3.0.4",
     "humanize-duration": "^3.27.0",
     "isomorphic-fetch": "^3.0.0",
     "prop-types": "^15.7.2",
