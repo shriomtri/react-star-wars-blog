@@ -27,12 +27,16 @@
   },
   "dependencies": {
     "bad-words": "^3.0.4",
+    "enroute": "^1.0.1",
+    "history": "^5.1.0",
     "humanize-duration": "^3.27.0",
+    "invariant": "^2.2.4",
     "isomorphic-fetch": "^3.0.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-router": "^6.0.2"
+    "react-router": "^6.0.2",
+    "react-router-dom": "^6.0.2"
   },
   "engines": {
     "node": "17.0.1",

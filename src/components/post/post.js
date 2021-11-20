@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 import Content from "./content";
 import Image from "./image";
 import UserHeader from "./userheader";
+import { Link } from "react-router-dom";
 
-import { API } from "../../shared/http";
 
 
 export class Post extends Component {
@@ -34,7 +34,9 @@ export class Post extends Component {
       <div className="post">
         <UserHeader {...this.state.post} />{" "}
         <Content {...this.state.post} />
-        <Image {...this.state.post} />
+        <Link to={`post/${this.state.post.episode_id}`}>
+          <Image {...this.state.post} />
+        </Link>
         {/* <Link link={this.state.post.link} /> */}
         {/* <PostActionSection showComments={this.state.showComments} />{" "} */}
         {/* <Comments
