@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import Content from "./content";
 import Image from "./image";
-import UserHeader from "./UserHeader";
+import UserHeader from "./userheader";
 
 import { API } from "../../shared/http";
 

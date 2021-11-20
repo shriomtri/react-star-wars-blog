@@ -1,10 +1,11 @@
 import React from "react";
-import Ad from "./components/ad/Ad";
+import Ad from "./components/ad/ad";
 import Loader from "./components/loader/loader";
 
 import Navigation from "./components/nav/navbar";
+import CreatePost from "./components/post/create";
 import Post from "./components/post/post";
-import Welcome from "./components/welcome/Welcome";
+import Welcome from "./components/welcome/welcome";
 import { API } from "./shared/http";
 
 class App extends React.Component {
@@ -62,6 +63,7 @@ class App extends React.Component {
           <div className="home">
             <Welcome />
             <div>
+              <CreatePost/>
               {
                 this.state.posts.length && (
                   <div className="posts">
