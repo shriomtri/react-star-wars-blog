@@ -1,79 +1,49 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { createError } from '../actions/error'
+import { fetchPosts } from '../actions/post'
 
 import Ad from "../components/ad/ad";
 import Loader from "../components/loader/loader";
 import CreatePost from "../components/post/create";
 import Post from "../components/post/post";
 import Welcome from "../components/welcome/welcome";
-import { API } from "../shared/http";
 
 class Home extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: null,
-      posts: [],
-      endpoint: ``,
-      loading: true,
-    };
 
-    this.getPosts = this.getPosts.bind(this);
-    console.log("I home reached");
+  componentDidMount(){
+    this.props.actions.fetchPosts();
   }
 
-  componentDidMount() {
-    this.getPosts();
+  componentDidCatch(error, info) {
+    this.props.actions.createError(error, info);
   }
 
-  getPosts() {
-    // const posts = await API.getPostsForPage();
-    // console.log(posts);
-    API.getPostsForPage().then((res) => {
-      res.json().then((posts) => {
-        console.log(posts);
-        this.setState(() => ({
-          ...this.state,
-          loading: false,
-          posts: posts.results,
-        }));
-      });
-    });
-  }
-
-  componentDidCatch(err, info) {
-    console.log(err);
-    console.log(info);
-    this.setState({
-      error: err,
-    });
-  }
 
   render() {
-    return this.state.loading ? (
-      <div className="loading">
-        <Loader />
-      </div>
-    ) : (
+    return (
       <div className="home">
         <Welcome />
         <div>
           <CreatePost />
-          {this.state.posts.length && (
+          {this.props.posts && (
             <div className="posts">
-              {this.state.posts.map((post) => (
+              {this.props.posts.map((post) => (
                 <>
                   {console.log(post)}
-                    <Post
-                      id={post.episode_id}
-                      key={post.episode_id}
-                      post={post}
-                    />
+                  <Post
+                    id={post.episode_id}
+                    key={post.episode_id}
+                    post={post}
+                  />
                 </>
               ))}
             </div>
           )}
-          <button className="block">Load more posts</button>
+          <button className="block">
+            Load more posts
+          </button>
         </div>
         <div>
           <Ad
@@ -90,4 +60,24 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export const mapStateToProps = state => {
+  console.log(`checking form state `, state)
+  const posts = Object.keys(state.posts).map(postId => state.posts[postId])
+  return { posts }; 
+};
+
+export const mapDispatchToProps = dispatch => {
+  return {
+    actions:
+      bindActionCreators({
+        createError,
+        fetchPosts,
+      },
+      dispatch
+    ),
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
+

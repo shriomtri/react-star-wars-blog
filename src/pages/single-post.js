@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Ad from "../components/ad/ad";
 import Post from "../components/post/post";
 import Loader from "../components/loader/loader";
-import { API } from "../shared/http";
+import { getPost } from "../shared/http";
 
 /**
  * Component for a single-post page
@@ -38,7 +38,7 @@ export class SinglePost extends Component {
   getPost(postId) {
     // const posts = await API.getPostsForPage();
     // console.log(posts);
-    API.getPost(postId).then((res) => {
+    getPost(postId).then((res) => {
       res.json().then((post) => {
         console.log(post);
         this.setState(() => ({
@@ -61,11 +61,6 @@ export class SinglePost extends Component {
   render() {
     return Object.keys(this.state.post).length > 0 ? (
       <div className="single-post">
-        <Link to="/">
-          <div className="back">
-            <i className="fa fa-arrow-left" /> Back
-          </div>
-        </Link>
         <Post post={this.state.post} />
         <Ad
           url="https://www.manning.com/books/react-in-action"

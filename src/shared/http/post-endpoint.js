@@ -1,5 +1,4 @@
 
-import * as API from './http';
 import fetch from 'isomorphic-fetch';
 
 // import { createError } from './error';
