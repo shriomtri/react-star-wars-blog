@@ -11,8 +11,8 @@ export const posts = (state = initialState.posts, action ) => {
         // if they are missing, add them in. JS Maps can be read out in insertion order,
         // so we should still get posts in the order that we got them back from the API in
         for (let post of posts) {
-            if (!nextState[post.id]) {
-                nextState[post.id] = post;
+            if (!nextState[post.episode_id]) {
+                nextState[post.episode_id] = post;
             }
         }
         return nextState

@@ -31,7 +31,7 @@ class Home extends React.Component {
             <div className="posts">
               {this.props.posts.map((post) => (
                 <>
-                  {console.log(post)}
+                  {console.log('got my post', post)}
                   <Post
                     id={post.episode_id}
                     key={post.episode_id}

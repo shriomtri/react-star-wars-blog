@@ -13,7 +13,8 @@ export const fetchPosts = () => {
   return dispatch => {
     getPostsForPage().then((res) => {
       res.json().then((posts) => {
-        dispatch(updateAvailablePosts(posts))
+        console.log(posts);
+        dispatch(updateAvailablePosts(posts.results))
       });
     })
     .catch(err => dispatch(createError(err)));;
